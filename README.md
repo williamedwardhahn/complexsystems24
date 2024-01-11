@@ -12,8 +12,8 @@
 
 [Barnsley's Fern Functions](https://www.youtube.com/watch?v=xoXe0AljUMA)
 
-
-
+[Benoit Mandelbrot: Fractals and the art of roughness](https://www.youtube.com/watch?v=ay8OMOsf6AQ)
+[Fractals - The Colors Of Infinity, by Arthur C. Clarke](https://www.youtube.com/watch?v=5qXSeNKXNPQ)
 
 
 
