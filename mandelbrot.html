@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mandelbrot Set</title>
+    <style>
+        body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+<canvas id="mandelbrotCanvas"></canvas>
+<script>
+    const canvas = document.getElementById('mandelbrotCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const width = 3200;
+    const height = 2400;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const xmin = -2.4;
+    const xmax = 1.2;
+    const ymin = -1.2;
+    const ymax = 1.2;
+    const maxIter = 256;
+
+    for (let ix = 0; ix < width; ix++) {
+        for (let iy = 0; iy < height; iy++) {
+
+            let x = map(ix, 0, width, xmin, xmax);
+            let y = map(iy, 0, height, ymin, ymax);
+
+            let zx = 0;
+            let zy = 0;
+            let iter = 0;
+
+            while (zx * zx + zy * zy < 4 && iter < maxIter) {
+                let xtemp = zx * zx - zy * zy + x;
+                zy = 2 * zx * zy + y;
+                zx = xtemp;
+                iter++;
+            }
+
+            const color = iter === maxIter ? '#000' : `hsl(0, 100%, ${iter / maxIter * 100}%)`;
+            ctx.fillStyle = color;
+            ctx.fillRect(ix, iy, 1, 1);
+        }
+    }
+
+    function map(value, start1, stop1, start2, stop2) {
+        return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+    }
+</script>
+</body>
+</html>
+
