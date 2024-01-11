@@ -2,6 +2,7 @@
 
 ## Links
 
+[Index Page](https://williamedwardhahn.github.io/complexsystems24/)
 
 [Chaos](https://www.youtube.com/watch?v=wdrO0Nwztrg)
 
