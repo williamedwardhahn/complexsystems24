@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barnsley's Fern</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <br>
+    <label for="iterationSlider">Iterations:</label>
+    <input type="range" id="iterationSlider" min="1000" max="500000" value="250000">
+    <span id="iterationCount">250000</span>
+    <br>
+
+    <!-- Sliders for matrix coefficients -->
+    <div>
+        <label for="aSlider">a:</label>
+        <input type="range" id="aSlider" min="-1" max="1" step="0.01" value="0.85">
+        <span id="aValue">0.85</span>
+    </div>
+    <div>
+        <label for="bSlider">b:</label>
+        <input type="range" id="bSlider" min="-1" max="1" step="0.01" value="0.04">
+        <span id="bValue">0.04</span>
+    </div>
+    <div>
+        <label for="cSlider">c:</label>
+        <input type="range" id="cSlider" min="-1" max="1" step="0.01" value="-0.04">
+        <span id="cValue">-0.04</span>
+    </div>
+    <div>
+        <label for="dSlider">d:</label>
+        <input type="range" id="dSlider" min="-1" max="1" step="0.01" value="0.85">
+        <span id="dValue">0.85</span>
+    </div>
+
+    <script>
+        // Barnsley's Fern in JavaScript
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const iterationSlider = document.getElementById('iterationSlider');
+        const iterationCount = document.getElementById('iterationCount');
+        // Sliders for matrix coefficients
+        const aSlider = document.getElementById('aSlider');
+        const aValue = document.getElementById('aValue');
+        const bSlider = document.getElementById('bSlider');
+        const bValue = document.getElementById('bValue');
+        const cSlider = document.getElementById('cSlider');
+        const cValue = document.getElementById('cValue');
+        const dSlider = document.getElementById('dSlider');
+        const dValue = document.getElementById('dValue');
+
+        function drawFern(n, a, b, c, d) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let x = 0, y = 0;
+            for (let i = 0; i < n; i++) {
+                ctx.fillStyle = 'green';
+                // Transform and draw point
+                ctx.fillRect(x * 50 + 300, -y * 50 + 500, 1, 1);
+                let nextX, nextY;
+                let r = Math.random();
+                if (r < 0.01) {
+                    nextX = 0;
+                    nextY = 0.16 * y;
+                } else if (r < 0.86) {
+                    nextX = a * x + b * y;
+                    nextY = c * x + d * y + 1.6;
+                } else if (r < 0.93) {
+                    nextX = 0.2 * x - 0.26 * y;
+                    nextY = 0.23 * x + 0.22 * y + 1.6;
+                } else {
+                    nextX = -0.15 * x + 0.28 * y;
+                    nextY = 0.26 * x + 0.24 * y + 0.44;
+                }
+                x = nextX;
+                y = nextY;
+            }
+        }
+
+        function updateFern() {
+            drawFern(iterationSlider.value, parseFloat(aSlider.value), parseFloat(bSlider.value), parseFloat(cSlider.value), parseFloat(dSlider.value));
+        }
+
+        iterationSlider.oninput = () => {
+            iterationCount.textContent = iterationSlider.value;
+            updateFern();
+        };
+        aSlider.oninput = () => {
+            aValue.textContent = aSlider.value;
+            updateFern();
+        };
+        bSlider.oninput = () => {
+            bValue.textContent = bSlider.value;
+            updateFern();
+        };
+        cSlider.oninput = () => {
+            cValue.textContent = cSlider.value;
+            updateFern();
+        };
+        dSlider.oninput = () => {
+            dValue.textContent = dSlider.value;
+            updateFern();
+        };
+
+        updateFern();
+    </script>
+</body>
+</html>
+
