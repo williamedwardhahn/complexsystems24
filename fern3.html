@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barnsley's Fern</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+        .slider-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <br>
+    <label for="iterationSlider">Iterations:</label>
+    <input type="range" id="iterationSlider" min="1000" max="500000" value="250000">
+    <span id="iterationCount">250000</span>
+    <br>
+
+    <!-- Sliders for each transformation -->
+    <div class="slider-group" id="transform1">
+        <strong>Transformation 1:</strong><br>
+    </div>
+    <div class="slider-group" id="transform2">
+        <strong>Transformation 2:</strong><br>
+    </div>
+    <div class="slider-group" id="transform3">
+        <strong>Transformation 3:</strong><br>
+    </div>
+    <div class="slider-group" id="transform4">
+        <strong>Transformation 4:</strong><br>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const iterationSlider = document.getElementById('iterationSlider');
+        const iterationCount = document.getElementById('iterationCount');
+
+        // Original coefficients
+        const originalCoefficients = {
+            transform1: {a: 0, b: 0, c: 0, d: 0.16, e: 0, f: 0},
+            transform2: {a: 0.85, b: 0.04, c: -0.04, d: 0.85, e: 0, f: 1.6},
+            transform3: {a: 0.2, b: -0.26, c: 0.23, d: 0.22, e: 0, f: 1.6},
+            transform4: {a: -0.15, b: 0.28, c: 0.26, d: 0.24, e: 0, f: 0.44}
+        };
+
+        function createSliders(transformId) {
+            const coefficients = ['a', 'b', 'c', 'd', 'e', 'f'];
+            const transformDiv = document.getElementById(transformId);
+
+            coefficients.forEach(coeff => {
+                const label = document.createElement('label');
+                label.innerHTML = `${coeff}: `;
+                label.setAttribute('for', `${transformId}-${coeff}Slider`);
+
+                const slider = document.createElement('input');
+                slider.setAttribute('type', 'range');
+                slider.setAttribute('id', `${transformId}-${coeff}Slider`);
+                slider.setAttribute('min', '-1');
+                slider.setAttribute('max', '1');
+                slider.setAttribute('step', '0.01');
+                slider.setAttribute('value', originalCoefficients[transformId][coeff]);
+
+                const span = document.createElement('span');
+                span.setAttribute('id', `${transformId}-${coeff}Value`);
+                span.innerHTML = originalCoefficients[transformId][coeff];
+
+                slider.oninput = () => {
+                    span.textContent = slider.value;
+                    updateFern();
+                };
+
+                transformDiv.appendChild(label);
+                transformDiv.appendChild(slider);
+                transformDiv.appendChild(span);
+                transformDiv.appendChild(document.createElement('br'));
+            });
+        }
+
+        createSliders('transform1');
+        createSliders('transform2');
+        createSliders('transform3');
+        createSliders('transform4');
+
+        function drawFern(n, transforms) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let x = 0, y = 0;
+            for (let i = 0; i < n; i++) {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(x * 50 + 300, -y * 50 + 500, 1, 1);
+                let r = Math.random();
+                let t;
+                if (r < 0.01) {
+                    t = transforms[0];
+                } else if (r < 0.86) {
+                    t = transforms[1];
+                } else if (r < 0.93) {
+                    t = transforms[2];
+                } else {
+                    t = transforms[3];
+                }
+                let nextX = t.a * x + t.b * y + t.e;
+                let nextY = t.c * x + t.d * y + t.f;
+                x = nextX;
+                y = nextY;
+            }
+        }
+
+        function getTransformValues(transformId) {
+            return {
+                a: parseFloat(document.getElementById(`${transformId}-aSlider`).value),
+                b: parseFloat(document.getElementById(`${transformId}-bSlider`).value),
+                c: parseFloat(document.getElementById(`${transformId}-cSlider`).value),
+                d: parseFloat(document.getElementById(`${transformId}-dSlider`).value),
+                e: parseFloat(document.getElementById(`${transformId}-eSlider`).value),
+                f: parseFloat(document.getElementById(`${transformId}-fSlider`).value),
+            };
+        }
+
+        function updateFern() {
+            const transforms = [
+                getTransformValues('transform1'),
+                getTransformValues('transform2'),
+                getTransformValues('transform3'),
+                getTransformValues('transform4')
+            ];
+            drawFern(iterationSlider.value, transforms);
+        }
+
+        iterationSlider.oninput = () => {
+            iterationCount.textContent = iterationSlider.value;
+            updateFern();
+        };
+
+        updateFern();
+    </script>
+</body>
+</html>
+
