@@ -8,6 +8,8 @@
 
 [Fractal Fern Lab 1](https://colab.research.google.com/drive/1t7r9_tronfhPZIksafGiHtaU9YiAsZ1M?usp=sharing)
 
+[Sierpinski Triangle](https://www.algorithm-archive.org/contents/IFS/IFS.html)
+
 [Barnsley](https://www.algorithm-archive.org/contents/barnsley/barnsley.html)
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Complex_systems_organizational_map.jpg/899px-Complex_systems_organizational_map.jpg?20101201041918" width=200>
