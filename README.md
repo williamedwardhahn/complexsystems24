@@ -8,6 +8,8 @@
 ## Viewings
 [Chaos](https://www.youtube.com/watch?v=wdrO0Nwztrg)
 
+[Barnsley's Fern Functions](https://www.youtube.com/watch?v=xoXe0AljUMA)
+
 
 
 
