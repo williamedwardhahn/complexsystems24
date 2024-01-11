@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barnsley's Fern</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <br>
+    <label for="iterationSlider">Iterations:</label>
+    <input type="range" id="iterationSlider" min="1000" max="500000" value="250000">
+    <span id="iterationCount">250000</span>
+    <script>
+        // Barnsley's Fern in JavaScript
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const iterationSlider = document.getElementById('iterationSlider');
+        const iterationCount = document.getElementById('iterationCount');
+
+        function drawFern(n) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let x = 0, y = 0;
+            for (let i = 0; i < n; i++) {
+                ctx.fillStyle = 'green';
+                // Transform and draw point
+                ctx.fillRect(x * 50 + 300, -y * 50 + 500, 1, 1);
+                let nextX, nextY;
+                let r = Math.random();
+                if (r < 0.01) {
+                    nextX = 0;
+                    nextY = 0.16 * y;
+                } else if (r < 0.86) {
+                    nextX = 0.85 * x + 0.04 * y;
+                    nextY = -0.04 * x + 0.85 * y + 1.6;
+                } else if (r < 0.93) {
+                    nextX = 0.2 * x - 0.26 * y;
+                    nextY = 0.23 * x + 0.22 * y + 1.6;
+                } else {
+                    nextX = -0.15 * x + 0.28 * y;
+                    nextY = 0.26 * x + 0.24 * y + 0.44;
+                }
+                x = nextX;
+                y = nextY;
+            }
+        }
+
+        iterationSlider.oninput = function() {
+            iterationCount.textContent = this.value;
+            drawFern(this.value);
+        }
+
+        drawFern(iterationSlider.value);
+    </script>
+</body>
+</html>
