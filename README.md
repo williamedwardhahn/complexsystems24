@@ -7,6 +7,8 @@
 
 [Mandelbrot](https://colab.research.google.com/drive/1fGcPfAexKr3LeRr9ZY2PZW2mvP5eyire?usp=sharing)
 
+[Random Walk](https://colab.research.google.com/drive/1siA2QsGCBQD0YYwIpfIZ5NvjGjnjYOEt?usp=sharing)
+
 ## Viewings
 [Chaos](https://www.youtube.com/watch?v=wdrO0Nwztrg)
 
