@@ -9,6 +9,17 @@
 
 [Random Walk](https://colab.research.google.com/drive/1siA2QsGCBQD0YYwIpfIZ5NvjGjnjYOEt?usp=sharing)
 
+
+
+
+## Web Links
+[Web Exp Index Page](https://williamedwardhahn.github.io/complexsystems24/)
+
+[Sierpinski Triangle](https://www.algorithm-archive.org/contents/IFS/IFS.html)
+
+[Barnsley](https://www.algorithm-archive.org/contents/barnsley/barnsley.html)
+
+
 ## Viewings
 [Chaos](https://www.youtube.com/watch?v=wdrO0Nwztrg)
 
@@ -17,15 +28,4 @@
 [Benoit Mandelbrot: Fractals and the art of roughness](https://www.youtube.com/watch?v=ay8OMOsf6AQ)
 
 [Fractals - The Colors Of Infinity, by Arthur C. Clarke](https://www.youtube.com/watch?v=5qXSeNKXNPQ)
-
-
-
-
-## Links
-[Web Exp Index Page](https://williamedwardhahn.github.io/complexsystems24/)
-
-[Sierpinski Triangle](https://www.algorithm-archive.org/contents/IFS/IFS.html)
-
-[Barnsley](https://www.algorithm-archive.org/contents/barnsley/barnsley.html)
-
 
