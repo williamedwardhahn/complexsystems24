@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Function Calculator</title>
+</head>
+<body>
+    <div>
+        <label for="nSlider">n (total number of items):</label>
+        <input type="range" id="nSlider" min="0" max="20" value="10">
+        <span id="nValue">10</span>
+    </div>
+    <div>
+        <label for="kSlider">k (number of items to choose):</label>
+        <input type="range" id="kSlider" min="0" max="20" value="5">
+        <span id="kValue">5</span>
+    </div>
+    <button id="calculate">Calculate</button>
+    <p>Number of combinations: <span id="result">-</span></p>
+
+    <script>
+        function factorial(n) {
+            return n <= 1 ? 1 : n * factorial(n - 1);
+        }
+
+        function choose(n, k) {
+            return factorial(n) / (factorial(k) * factorial(n - k));
+        }
+
+        function updateValues() {
+            var n = parseInt(document.getElementById('nSlider').value);
+            var k = parseInt(document.getElementById('kSlider').value);
+            document.getElementById('nValue').textContent = n;
+            document.getElementById('kValue').textContent = k;
+            document.getElementById('result').textContent = choose(n, k);
+        }
+
+        document.getElementById('nSlider').addEventListener('input', updateValues);
+        document.getElementById('kSlider').addEventListener('input', updateValues);
+        document.getElementById('calculate').addEventListener('click', updateValues);
+        updateValues(); // To initialize values on page load
+    </script>
+</body>
+</html>
+
