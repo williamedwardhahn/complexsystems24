@@ -30,3 +30,6 @@
 
 [Fractals - The Colors Of Infinity, by Arthur C. Clarke](https://www.youtube.com/watch?v=5qXSeNKXNPQ)
 
+[Analog Supercomputers: From Quantum Atom to Living Body](https://www.youtube.com/watch?v=ZycidN_GYo0)
+
+[Analog Computer Fire Control](https://www.youtube.com/watch?v=s1i-dnAH9Y4)
