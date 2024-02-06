@@ -11,6 +11,7 @@
 
 [Color Space](https://colab.research.google.com/drive/1jVYCh2zL7GWPYkU53VKT3GygimyfUbj0?usp=sharing)
 
+[Analog Computer](https://colab.research.google.com/drive/1sXSOgrC1x8J3IHgLHkBnhFaknlQpRTon?usp=sharing)
 
 ## Web Links
 [Web Exp Index Page](https://williamedwardhahn.github.io/complexsystems24/)
